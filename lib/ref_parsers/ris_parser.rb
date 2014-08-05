@@ -15,7 +15,7 @@ module RefParsers
 
     def initialize
       @type_key = "TY"
-      @types = %w(ABST ADVS ART BILL BOOK CASE CHAP COMP CONF CTLG DATA ELEC GEN HEAR ICOMM INPR JFULL JOUR MAP MGZN MPCT MUSIC NEWS PAMP PAT PCOMM RPRT SER SLIDE SOUND STAT THES UNBILl UNPB VIDEO)
+      @types = %w(ABST ADVS ART BILL BOOK BLOG CASE CHAP COMP CONF CTLG DATA ELEC GEN HEAR ICOMM INPR JFULL JOUR MAP MGZN MPCT MUSIC NEWS PAMP PAT PCOMM RPRT SER SLIDE SOUND STAT THES UNBILl UNPB VIDEO)
       @terminator_key = "ER"
       @line_regex = /^(#{ris_document_attributes})  -( (.*))?$/
       @key_regex_order = 1
