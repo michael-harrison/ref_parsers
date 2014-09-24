@@ -58,6 +58,7 @@ protected
     def parse_first_line(line)
       first = parse_line(line)
       return nil if first.nil?
+      first[:value].upcase!
       raise "First line should start with #{@type_key}" if first[:key] != @type_key
       raise "#{line}: Reference type should be one of #{@types.inspect}" unless @types.include? first[:value]
       first

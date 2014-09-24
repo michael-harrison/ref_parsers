@@ -36,6 +36,36 @@ describe RefParsers::RISParser do
         expect(subject.open(zotero_journal_article_export)).to eq valid_return_data
       end
     end
+
+    context 'EBSCO Discovery export' do
+      let(:ebsco_discovery_export) { File.join('spec','fixtures','real_world','EBSCO_discovery_export.ris') }
+
+      let(:valid_return_data) {
+        [{"type"=>"BOOK",
+            "ID"=>"melb.b5146393",
+            "AU"=>"Petric, Ernest",
+            "T1"=> "Foreign policy [electronic resource] : from conception to diplomatic practice / by Ernest Petric.",
+            "Y1"=>"2013///",
+            "M3"=>["Dictionaries", "Bibliographies", "Non-fiction"],
+            "PB"=>"Leiden : Martinus Nijhoff Publishers, 2013.",
+            "AV"=>"UniM INTERNET resource",
+            "SN"=>["9789004245501", "9004245502", "9789004245495", "9004245499"],
+            "N2"=> "Summary: Foreign Policy: From Conception to Diplomatic Practice represents an original and important contribution to the study of foreign policy, uniquely framed by the experiences of small and new countries. Ambassador Ernest Petri? artfully brings together academic expertise and years of diplomatic experience to provide a thorough treatment of national and international environments, the foreign policy decision making process and an original analysis of the means of foreign policy and diplomacy. The role of the United Nations, the EU, strategic actors and the role of foreign policy as a diplomat.",
+            "KW"=> ["International relations",
+                       "Diplomacy",
+                       "POLITICAL SCIENCE / Government / International",
+                       "POLITICAL SCIENCE / International Relations / General"],
+            "N1"=> "Accession Number: melb.b5146393; Other Notes: Includes bibliographical references and index.; Available to subscribing member institutions only.; Description based on print version record.; Publication Type: Book; Physical Description: 1 online resource (xvi, 301 p.); Language: English; OCLC: 825978171",
+            "UR"=> ["https://ezp.lib.unimelb.edu.au/login?url=https://search.ebscohost.com/login.aspx?direct=true&db=cat00006a&AN=melb.b5146393&scope=site", "http://dx.doi.org.ezp.lib.unimelb.edu.au/10.1163/9789004245501"],
+            "DP"=>"EBSCOhost",
+            "DB"=>"cat00006a"}]
+      }
+
+      it 'will return an array of entries' do
+        expect(subject.open(ebsco_discovery_export)).to eq valid_return_data
+      end
+
+    end
   end
 
 end
