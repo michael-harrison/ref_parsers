@@ -18,7 +18,7 @@ module RefParsers
       entries
     end
 
-protected
+    protected
 
     def parse_entry(lines, next_line)
       begin
