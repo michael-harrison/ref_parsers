@@ -1,7 +1,7 @@
 module RefParsers
   class LineParser
     def open(filename)
-      parse File.read(filename, encoding: 'UTF-8')
+      parse File.open(filename, 'r:bom|utf-8').read
     end
 
     def parse(body)
