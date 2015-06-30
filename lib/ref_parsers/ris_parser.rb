@@ -3,7 +3,7 @@ module RefParsers
 
     def initialize
       @type_key = 'TY'
-      @types = %w[ABST ADVS ART BILL BOOK BLOG CASE CHAP COMP CONF CTLG DATA ELEC GEN HEAR ICOMM INPR JFULL JOUR MAP MGZN MPCT MUSIC NEWS PAMP PAT PCOMM RPRT SER SLIDE SOUND STAT THES UNBILl UNPB VIDEO].map{|type| type.force_encoding('UTF-8')}
+      @types = available_types
       @terminator_key = 'ER'
       @line_regex = /^(#{supported_ris_tags})  -( (.*))?$/u
       @key_regex_order = 1
@@ -12,6 +12,50 @@ module RefParsers
     end
 
     private
+    def available_types
+      raw_types.map { |type| type.force_encoding('UTF-8') }
+    end
+
+    def raw_types
+      [
+        "ABST",
+        "ADVS",
+        "ART",
+        "BILL",
+        "BOOK",
+        "BLOG",
+        "CASE",
+        "CHAP",
+        "COMP",
+        "CONF",
+        "CTLG",
+        "DATA",
+        "ELEC",
+        "GEN",
+        "HEAR",
+        "ICOMM",
+        "INPR",
+        "JFULL",
+        "JOUR",
+        "MAP",
+        "MGZN",
+        "MPCT",
+        "MUSIC",
+        "NEWS",
+        "PAMP",
+        "PAT",
+        "PCOMM",
+        "RPRT",
+        "SER",
+        "SLIDE",
+        "SOUND",
+        "STAT",
+        "THES",
+        "UNBILl",
+        "UNPB",
+        "VIDEO"
+      ]
+    end
 
     # Return a string of the supported ris document attributes
     def supported_ris_tags
